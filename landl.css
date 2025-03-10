@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Badeen+Display&family=Montserrat+Underline:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:"Montserrat", sans-serif;
+    scroll-behavior: smooth;
+}
+body{
+    background-color: aliceblue;
+}
+
+.nav-bar{
+    width: 100%;
+    display: flex;
+    border-bottom: .5px solid black;
+    gap: 4rem;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background-color: #060505;
+
+    z-index: 1;
+}
+.nav-bar .right-nav{
+    float: right;
+    
+}
+.nav-bar .right-nav ul{
+    list-style-type: none;
+    display: flex;
+    gap: 4rem;
+    margin-top: 2rem;
+}
+.nav-bar .right-nav ul li a{
+    color: #f2edc2;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: .3s all ease;   
+}
+.nav-bar .right-nav ul li a:hover{
+    color: brown;
+    text-shadow: 2px 2px 10px white;
+}
+
+.nav-bar .left-nav .logo img{
+    height: 100px;
+    border-radius: 100%;
+}
+
+.intro{
+    padding: 5px;
+    background-image: url(@pdf_channel.jfif);
+    height: 100vh;
+    color:#333333;
+}   
+
+.intro h1{
+    margin-top: 250px;
+    text-align: left;
+}
+
+.intro button{
+    height: 2rem;
+    width: 8rem;
+    border-radius: 1.5rem;
+    font-size: .9rem;
+    cursor: pointer;
+}
+.intro button a{
+    text-decoration: none;
+    color: #333333;
+    font-weight: 600;
+}
+.products{
+    margin-top: 3rem;
+    width: 100%;
+}
+.products h2{
+    justify-self: center;
+    margin-bottom: 2rem
+}
+.products .product-catalog{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1rem;
+}
+.products .product-catalog .product-items{
+    box-shadow: 0 .2rem .2rem rgba(0,0,0,.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+.products .product-catalog .product-items img{
+    object-fit: contain;
+    width: 200px;
+    height: 200px;
+}
+
+.footer{
+    margin-top: 3rem;
+    border-top: .5px solid #060505;
+    background: linear-gradient(135deg,black,#333333);;
+    padding: 3vw;
+    color: #f2edc2;
+    font-size: 1vw;
+    padding-top: .2rem;
+}
+
+.footer h2{
+    font-size: 2rem;
+    justify-self: center;
+    margin-bottom: 1rem;
+    padding: 0;
+}
+.footer hr{
+    margin-top: 2vw;
+}
+
+.social-links{
+    margin-top: 10px;
+    justify-self: center;
+}
+.social-links a{
+    font-size: 1.5vw;
+    gap: 2rem;
+    margin:0 20px;
+
+}
+
+.social-links a:hover{
+    color: #ff7e5f;
+}
+.checkout{
+    gap: 10rem;
+    display: flex;
+    height: 20rem;
+    margin-right: 2px;
+}
+
+.checkout .product-details img{
+    background-color: #f2edc2;
+    height: 30rem;
+    width: 30rem;
+}
+
+.checkout-details{
+    background-color: #f2edc2;
+    gap: 2rem;
+    width: 100%;
+    margin-right: 0;
+    height: fit-content;
+}
+.checkout-details .shop-button{
+    justify-self: center;
+    font-size: 2rem;
+    padding: 2px;
+    width: 100%;
+}
+.checkout-details button{
+    padding: 1rem;
+    margin-bottom: .9rem;
+}
+
+#cart{
+    border: 2px solid black;
+    background-color: white;
+    display: block;
+    margin-top: 1vw;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+}
+
+#buy{
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+}
+    
+
+ 
+.products .product-catalog .product-items img{
+    object-fit: contain;
+    width: 200px;
+    height: 200px;
+}
+@media only screen and (max-width:767px) {
+    .products{
+        margin-top: 1rem;
+        width: 100%;
+        padding: 0;
+    }
+    .products h2{
+        justify-self: center;
+        margin-bottom: 2rem
+    }
+    .products .product-catalog{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        padding: 0;
+    }
+    .products .product-catalog .product-items{
+        box-shadow: 0 .2rem .2rem rgba(0,0,0,.5);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .2rem;
+        background-color: #f0f0f0;
+        cursor: pointer;
+        margin: .1rem;
+        width: 150px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .products .product-catalog .product-items img{
+        object-fit: contain;
+        width: 150px;
+        height: 200px;
+    }
+
+    .nav-bar .right-nav ul{
+        list-style-type: none;
+        display: flex;
+        gap: .5rem;
+        margin-top: 2rem;
+    }
+    .nav-bar .right-nav ul li a{
+        color: #f2edc2;
+        text-decoration: none;
+        font-size: .6rem;
+        cursor: pointer;
+        transition: .3s all ease;   
+    }
+    .nav-bar .left-nav .logo img{
+        height: 90px;
+        border-radius: 100%;
+    }
+    #page1 .products{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #page1 .products .product-catalog{
+        display: flex;
+        gap: 0;
+        overflow-x: scroll;
+        transition: .3s all ease;  
+        scroll-behavior: smooth;
+    }
+
+
+    .intro{
+        background-repeat: none;
+        width: 100%;
+        height: 800px;
+        margin-bottom: 40px;
+        padding-bottom: 5px;
+    }
+    .intro img{
+        width: 100%;
+    }
+    .nav-bar {
+        padding-left: 0;
+        margin-right: 1rem;
+        list-style-type: none;
+        display: flex;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    .footer{
+        height: auto;
+        font-size: 4w;
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(135deg,black,#333333);
+        text-align: center;
+    }
+
+
+    .footer h2{
+        font-size: 1.5rem;    
+    }
+
+    .footer hr{
+        margin-top: 1vw;
+    }
+
+    .social-links a{
+        font-size: 3vw;
+    }
+    .products h2{
+        align-self: center;
+    }
+    .products .product-catalog{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 1rem;
+    }
+
+    .intro-text1 h2{
+        font-size: .9rem;
+    }
+
+    .intro-text1 h3{
+        font-size: .8rem;
+    }
+    
+    .intro-text1{
+        margin-bottom: 1rem;
+    }
+    .checkout{
+        gap: 2rem;
+        display: flex;
+        height: 20rem;
+    }
+    .checkout .product-details img{
+        background-color: #f2edc2;
+        height: 10rem;
+        width: 10rem;
+    }
+    
+    .checkout-details{
+        background-color: #f2edc2;
+        width: 15rem;
+        margin-right: 0;
+        font-size: 4vw;
+        height: fit-content;
+    }
+
+    .checkout-details #product-name{
+
+    }
+
+    .checkout-details .shop-button{
+        justify-self: center;
+        font-size: 1rem;
+        padding: 2px;
+        width: 100%;
+    }
+    .checkout-details button{
+        padding: 1rem;
+        margin-bottom: .9rem;
+    }
+    
+    #cart{
+        border: 2px solid black;
+        background-color: white;
+        display: block;
+        margin-top: 1vw;
+        cursor: pointer;
+        width: 100%;
+        font-size: 4vw;
+    }
+    
+    #buy{
+        border: 2px solid black;
+        background-color: black;
+        color: white;
+        width: 100%;
+        font-size: 4vw;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined"
+    rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="landl.css">
+    <title>Checkout</title>
+</head>
+<body style="background-color: white;">
+    <div class="nav-bar">
+        <div class="left-nav">
+            <div class="logo"><img src="landl.png" alt=""></div>
+        </div>
+        <div class="right-nav">
+            <ul>
+                <li><a onclick="window.location.href='lockedandloaded.html#products'">ALL</a></li>
+                <li><a onclick="window.location.href='top.html'">TOPS</a></li>
+                <li><a onclick="window.location.href='trouser.html'">TROUSERS</a></li>
+                <li><a onclick="window.location.href='hoodie.html'">HOODIES AND SWEATS</a></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <div class="checkout">
+        <div class="product-details">
+            <img src="" alt="Product Image" id="product-image">
+        </div>
+        <div class="checkout-details">
+            <h2 id="product-name"></h2>
+            <p id="product-price"></p>
+            <label for="size">Choose a Size:</label>
+            <select name="size">
+                <option value="XXL">XXL</option>
+                <option value="XL">XL</option>
+                <option value="L">L</option>
+                <option value="M">M</option>
+                <option value="S">S</option>
+            </select>
+            <div class="shop-button">
+                <button id="cart"><span class="material-symbols-outlined">add_shopping_cart</span>Add to cart <i class="fas fa-arrow-right"></i>
+                </button>
+                <button id="buy">Buy now <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const selectedItem = JSON.parse(localStorage.getItem('selectedItem'));
+
+        if (selectedItem){
+            document.getElementById('product-image').src = selectedItem.image;
+            document.getElementById('product-name').textContent = selectedItem.name;
+            document.getElementById('product-price').textContent = selectedItem.price;
+        }
+        const carts = document.querySelectorAll('#cart');
+        let cart_item = [];
+
+        carts.forEach(cart => {
+            cart.addEventListener('click', function() {
+                const selectedItem = JSON.parse(localStorage.getItem('selectedItem'));
+                if (selectedItem) {
+                    cart_item.push(selectedItem.name,selectedItem.price);
+                    alert(`Current cart items: ${cart_item.join(': ')}`);
+                } else {
+                    alert('No item selected!');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
