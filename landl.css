@@ -281,7 +281,7 @@ body{
 
     .footer{
         height: auto;
-        font-size: 2rem;
+        font-size: 2vw;
         font-family: 'Roboto', sans-serif;
         background: linear-gradient(135deg,black,#333333);
         text-align: center;
