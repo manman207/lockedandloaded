@@ -16,7 +16,7 @@
         </div>
         <div class="right-nav">
             <ul>
-                <li><a onclick="window.location.href='index.html#products'">ALL</a></li>
+                <li><a onclick="window.location.href='lockedandloaded.html#products'">ALL</a></li>
                 <li><a onclick="window.location.href='top.html'">TOPS</a></li>
                 <li><a onclick="window.location.href='trouser.html'">TROUSERS</a></li>
                 <li><a onclick="window.location.href='hoodie.html'">HOODIES AND SWEATS</a></li>
@@ -42,34 +42,74 @@
             <div class="shop-button">
                 <button id="cart"><span class="material-symbols-outlined">add_shopping_cart</span>Add to cart <i class="fas fa-arrow-right"></i>
                 </button>
-                <button id="buy">Buy now <i class="fas fa-arrow-right"></i></button>
+                <button id="buy">Buy now 
+                    <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        const selectedItem = JSON.parse(localStorage.getItem('selectedItem'));
-
-        if (selectedItem){
-            document.getElementById('product-image').src = selectedItem.image;
+        const selectedItem = JSON.parse(localStorage.getItem('selectedItem')); //this line is fetch the selectedItem value and convert it into a JS objectt
+    
+        if (selectedItem) {
+            document.getElementById('product-image').src = selectedItem.image; 
             document.getElementById('product-name').textContent = selectedItem.name;
             document.getElementById('product-price').textContent = selectedItem.price;
-        }
-        const carts = document.querySelectorAll('#cart');
-        let cart_item = [];
+        }//this line updates the html elements with the product's name, price and image by checking if an item was selected
+                
+    
+        
+        let cart_items = JSON.parse(localStorage.getItem('cart_items')) || []; //this initializes the cart_items array by retrieving it from the local storage but if no items are found it defaults to an empty array
+    
 
-        carts.forEach(cart => {
-            cart.addEventListener('click', function() {
-                const selectedItem = JSON.parse(localStorage.getItem('selectedItem'));
-                if (selectedItem) {
-                    cart_item.push(selectedItem.name,selectedItem.price);
-                    alert(`Current cart items: ${cart_item.join(': ')}`);
-                } else {
-                    alert('No item selected!');
-                }
-            });
+        function updateCartInLocalStorage() {
+            localStorage.setItem('cart_items', JSON.stringify(cart_items));
+        } //to update the local storage with current state of the array
+
+        const cartButton = document.getElementById('cart');//getting the cart button
+    
+
+        cartButton.addEventListener('click', function() {
+            const selectedItem = JSON.parse(localStorage.getItem('selectedItem')); //Retrieves the items again to make sure the most recent selection is used
+            
+            if (selectedItem) {
+                const item = {
+                    name: selectedItem.name,
+                    price: selectedItem.price 
+                };//created an object with the selected item's name and orice by checking if an item was selected 
+                
+                cart_items.push(item); //it adds the item to the cart_items array
+
+                updateCartInLocalStorage();//updates the local storage with the new state of the cart_items array after adding the new item
+    
+                const cartSummary = cart_items.map(item => `${item.name} - ${item.price}`).join('\n');
+                // Creates a summary ot the items in the cart by looping over each item in the cart_items array and creating a new array of strings with the item name and price and joining the array of strings into a single string with each item on a new line
+                
+                alert(`Current cart items:\n${cartSummary}`); //display the summary
+            } else {
+                alert('No item selected!');
+            }
         });
 
+        const buyButton = document.getElementById('buy');//getting the buy button
+
+        buyButton.addEventListener('click', function() {
+            let totalPrice = 0; 
+
+
+            for (const item of cart_items) {
+                
+                totalPrice += parseFloat(item.price.replace("£", "")); //replaces the pound symbol with nothing and converts the price to a float to be able to add it to the total price
+            }
+
+            const cartSummary = cart_items.map(item => `${item.name} - ${item.price}`).join('\n'); //similar to to the first cart summary just shows the summary of items that the user is about to buy
+
+            alert(`Successfully purchased:\n${cartSummary}\n\nTotal Price: £${totalPrice.toFixed(2)}`); //display the summary and the total  price with teo decimal places
+
+            cart_items = []; //this is to empty the cart
+            updateCartInLocalStorage(); //to updte the cart in the local storage;
+        });
     </script>
 </body>
 </html>
