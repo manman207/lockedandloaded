@@ -101,6 +101,8 @@ body{
     gap: .5rem;
     background-color: white;
     cursor: pointer;
+    width: fit-content;
+    height: fit-content;
 }
 .products .product-catalog .product-items img{
     object-fit: contain;
